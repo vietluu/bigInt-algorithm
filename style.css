@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+}
+.form{
+    display: flex;
+    width: 400px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    flex-direction: column;
+    margin:  0 auto;
+    padding: 10px;
+    background-color: rgb(105, 194, 229);
+}
+h1{
+    text-align: center;
+
+}
+input{
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    outline: none;
+    border: 1px solid #e1eee1;
+    border-radius: 3px;
+}
+.selection{
+    padding:  10px 0;
+    
+}
+select{
+    outline: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #e1eee1;
+
+}
+button{
+    width: 80px;
+    margin: 10px auto;
+    outline: none;
+    border: 1px solid #e1eee1;
+    padding: 3px 5px ;
+    border-radius: 5px;
+
+}
