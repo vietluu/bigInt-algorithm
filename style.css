@@ -43,3 +43,15 @@ button{
     border-radius: 5px;
 
 }
+.formaction{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.files{
+    width: 40%;
+}
+.files  input {
+    width: 100%;
+}

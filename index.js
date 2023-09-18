@@ -1,3 +1,19 @@
+const fileData = document.getElementById("data");
+fileData.addEventListener("change", (e) => {
+  let reader = new FileReader();
+  reader.readAsText(e.target.files[0]);
+
+  reader.onload = function () {
+    let value = JSON.parse(reader.result);
+    document.getElementById("num1").value = value.num1;
+    document.getElementById("num2").value = value.num2;
+  };
+
+  reader.onerror = function () {
+    console.log(reader.error);
+  };
+});
+
 function matchAction(e) {
   e.preventDefault();
   const num1 = document.getElementById("num1").value;
@@ -47,32 +63,32 @@ function multiplyStrings(num1, num2) {
 }
 
 function divideLargeNumbers(dividend, divisor) {
-  let quotient = '';
-  let remainder = '';
+  let quotient = "";
+  let remainder = "";
 
-  if(divisor == 0){
-    return 'không thể chia!'
+  if (divisor == 0) {
+    return "không thể chia!";
   }
   if (dividend == 0) {
-    return  '0'
+    return "0";
   }
 
   for (let i = 0; i < dividend.length; i++) {
     let currentDigit = Number(remainder + dividend[i]);
-    
+
     if (currentDigit < divisor) {
       remainder = currentDigit.toString();
-      quotient += '0';
+      quotient += "0";
     } else {
       let tempQuotient = Math.floor(currentDigit / divisor);
       let tempRemainder = currentDigit % divisor;
-      
+
       remainder = tempRemainder.toString();
       quotient += tempQuotient.toString();
     }
   }
 
-  return `${quotient.replace(/^0+/,'') || 0}` + ' dư: ' + `${remainder}`
+  return `${quotient.replace(/^0+/, "") || 0}` + " dư: " + `${remainder}`;
 }
 
 // do thoi gian xu li
@@ -81,5 +97,7 @@ function performanceTime(num1, num2, func) {
   func(num1, num2);
   const end = performance.now();
   const time = end - start;
-  alert("result: " + func(num1, num2)  + " in: " + time.toFixed(3) + " milliseconds");
+  alert(
+    "result: " + func(num1, num2) + " in: " + time.toFixed(3) + " milliseconds"
+  );
 }
