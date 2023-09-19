@@ -97,7 +97,27 @@ function performanceTime(num1, num2, func) {
   func(num1, num2);
   const end = performance.now();
   const time = end - start;
-  alert(
-    "result: " + func(num1, num2) + " in: " + time.toFixed(3) + " milliseconds"
-  );
+  showModal(func(num1, num2),time.toFixed(3))
+  // alert(
+  //   "result: " + func(num1, num2) + " in: " + time.toFixed(3) + " milliseconds"
+  // );
+}
+function showModal(result,time){
+  const body = document.getElementById('body')
+  const div = document.createElement('div');
+  const btn = document.createElement('button')
+  btn.textContent = 'OK'
+  div.className += 'modal'
+  div.innerHTML +='<span>Result</span>'
+  div.innerHTML +=`<p>Kết quả của phép tính là ${result} với thời gian thực hiện trong ${time} milliseconds </p>`
+  div.appendChild(btn);
+  btn.onclick = ()=>{
+        body.removeChild(div)
+
+  }
+  body.appendChild(div);
+  setTimeout(()=>{
+    body.removeChild(div)
+  },3000)
+  
 }

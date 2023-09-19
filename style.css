@@ -51,7 +51,37 @@ button{
 }
 .files{
     width: 40%;
+    border: 1px dotted black; 
+    padding: 5px 10px;
+    font-size: 12px;
 }
 .files  input {
     width: 100%;
+}
+.files label {
+}
+body{
+    position: relative;
+}
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 31%;
+    width: 500px;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+    text-align: center;
+    transition: all linear 1s;
+
+}.modal span{
+    font-size: 30px;
+    font-weight: 600;
+}
+.modal p{
+    text-align: left;
+}
+.modal button{
+    text-align: center;
 }
