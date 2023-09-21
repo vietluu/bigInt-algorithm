@@ -14,9 +14,9 @@
     <form class="form" onsubmit="matchAction(event)" >
         <h1>Basic Calculator</h1>
         <label for="num1">số thứ 1</label>
-        <input type="text" id="num1" pattern="[0-9]+" required title="nhập chữ số">
+        <input type="text" id="num1" pattern="^-?\d+$" required title="nhập chữ số">
         <label for="num2">số thứ 2</label>
-        <input type="text" id="num2" pattern="[0-9]+" required title="nhập chữ số">
+        <input type="text" id="num2" pattern="^-?\d+$" required title="nhập chữ số">
         <div class="formaction">
             <div class="selection">
                 <label for="math"> phép tính</label>

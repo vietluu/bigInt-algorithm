@@ -40,6 +40,15 @@ function matchAction(e) {
 }
 
 function multiplyStrings(num1, num2) {
+  
+
+  const isNegative = (num1.charAt(0) === '-' && num2.charAt(0) !== '-') || (num1.charAt(0) !== '-' && num2.charAt(0) === '-');
+  if (num1.charAt(0) === '-') {
+    num1 = num1.slice(1);
+  }
+  if (num2.charAt(0) === '-') {
+    num2 = num2.slice(1);
+  }
   const bigInt1 = num1.length;
   const bigInt2 = num2.length;
   // tao mang  m+n  chu so 0
@@ -58,8 +67,12 @@ function multiplyStrings(num1, num2) {
   while (result[0] === 0) {
     result.shift();
   }
-
-  return result.length === 0 ? "0" : result.join("");
+  if (isNegative && result.length > 0) {
+    return '-' + result.join("");
+  } else {
+    return result.length === 0 ? "0" : result.join("");
+  }
+  
 }
 
 function divideLargeNumbers(dividend, divisor) {
