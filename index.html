@@ -1,39 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./asset/css/style.css" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./index.js" defer> </script>
+        <title>BigInt algorithm</title>
+    </head>
 
-    <title>BigInt algorithm</title>
-</head>
-
-<body id="body">
-    <form class="form" onsubmit="matchAction(event)" >
-        <h1>Basic Calculator</h1>
-        <label for="num1">số thứ 1</label>
-        <input type="text" id="num1" pattern="[0-9]+" required title="nhập chữ số">
-        <label for="num2">số thứ 2</label>
-        <input type="text" id="num2" pattern="[0-9]+" required title="nhập chữ số">
-        <div class="formaction">
-            <div class="selection">
-                <label for="math"> phép tính</label>
-            <select id="math">
-                <option value="summation">cộng</option>
-                <option value="Subtraction">trừ</option>
-                <option value="multiplication"> nhân</option>
-                <option value="division">chia</option>
-            </select>
+    <body id="body">
+        <form class="form" id="form">
+            <h1>BigInt algorithm</h1>
+            <label for="num1">số thứ 1</label>
+            <textarea
+                type="text"
+                id="num1"
+                required
+                title="nhập chữ số"
+            ></textarea>
+            <label for="num2">số thứ 2</label>
+            <textarea
+                type="text"
+                id="num2"
+                required
+                title="nhập chữ số"
+            ></textarea>
+            <label for="result">Kết quả</label>
+            <textarea type="text" readonly id="result"></textarea>
+            <div>
+                <label for="">Thời gian tính: </label>
+                <input readonly class="time" value="0 milliseconds" />
             </div>
-            <div class="files">
-                <label for="data"><span style="color:red">nhập file</span> - Chỉ chấp nhận file json</label>
-                <input style="display: none;" type="file" id="data" accept=".json"/>
+            <div class="formaction">
+                <div class="selection">
+                    <label for="math"> phép tính</label>
+                    <select id="math">
+                        <option value="summation">cộng</option>
+                        <option value="subtraction">trừ</option>
+                        <option value="multiplication">nhân</option>
+                        <option value="division">chia</option>
+                    </select>
+                </div>
+                <div class="files">
+                    <label for="data"
+                        ><span style="color: red">nhập file</span> - Chỉ chấp
+                        nhận file json</label
+                    >
+                    <input
+                        style="display: none"
+                        type="file"
+                        id="data"
+                        accept=".json"
+                    />
+                </div>
             </div>
-        </div>
-        <button type="submit" id="perform">tính</button>
-    </form>
-</body>
+            <div>
+                <button type="submit" id="perform">tính</button>
 
+                <button type="button" id="clear">clear</button>
+            </div>
+            <div class="random-box">
+                <div>
+                    <label for="">Độ dài bắt đầu: </label>
+                    <input class="random-start" value="0" />
+                </div>
+                <div>
+                    <label for="">Độ dài kết thúc: </label>
+                    <input class="random-end" value="0" />
+                </div>
+                <button type="button" id="random">random</button>
+            </div>
+        </form>
+
+        <script type="module" src="./asset/js/index.js" defer></script>
+        <script src="./asset/js/linkedList.js" defer></script>
+    </body>
 </html>
