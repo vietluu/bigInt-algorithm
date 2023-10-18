@@ -2,29 +2,30 @@ class Node {
     constructor(value) {
       this.value = value;
       this.next = null;
+      this.prev = null;
     }
   }
   
-  class LinkedList {
+  class DoublyLinkedList {
     constructor() {
       this.head = null;
+      this.tail = null;
     }
   
     addToTail(value) {
       const newNode = new Node(value);
       if (!this.head) {
         this.head = newNode;
+        this.tail = newNode;
       } else {
-        let current = this.head;
-        while (current.next) {
-          current = current.next;
-        }
-        current.next = newNode;
+        newNode.prev = this.tail;
+        this.tail.next = newNode;
+        this.tail = newNode;
       }
     }
   }
   
-  export function  multiplyLargeNumberLinkedlist(num1, num2) {
+  export function  multiplyLargeNumberStack(num1, num2) {
     const isNegative = (num1[0] === '-' && num2[0] !== '-') || (num1[0] !== '-' && num2[0] === '-');
     num1 = num1.replace('-', '');
     num2 = num2.replace('-', '');
@@ -33,8 +34,8 @@ class Node {
       return '0';
     }
   
-    const num1List = new LinkedList();
-    const num2List = new LinkedList();
+    const num1List = new DoublyLinkedList();
+    const num2List = new DoublyLinkedList();
   
     for (let i = num1.length - 1; i >= 0; i--) {
       num1List.addToTail(parseInt(num1[i]));
@@ -77,3 +78,6 @@ class Node {
   
     return finalResult;
   }
+  
+
+  

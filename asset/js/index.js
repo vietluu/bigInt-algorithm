@@ -3,7 +3,10 @@ import { addLargeIntegers } from './add.js';
 import { getRandomLargeIntegersInRange } from './random.js';
 import { subtractLargeIntegers } from './sub.js';
 import { divideLargeNumbers } from './div.js';
-
+import { multiplyLargeNumberDBLinkedList
+} from './doubleLinkedlist.js'
+import {multiplyLargeNumberLinkedlist} from './linkedList.js'
+import {multiplyLargeNumberStack} from './stack.js'
 const randomBtn = document.getElementById('random');
 const number1 = document.getElementById('num1');
 const number2 = document.getElementById('num2');
@@ -35,11 +38,8 @@ const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
     mathAction(e);
 });
-
 function mathAction(e) {
     e.preventDefault();
-    const list = new LinkedList();
-    const { multiplyLinkedList } = list;
     const num1 = document.getElementById('num1').value;
     const num2 = document.getElementById('num2').value;
     const select = document.getElementById('math').value;
@@ -75,7 +75,7 @@ function mathAction(e) {
             performanceTime(num1, num2, divideLargeNumbers, res, timeInput);
             break;
         case 'multiplication':
-            performanceTime(num1, num2, multiplyLinkedList, res, timeInput);
+            performanceTime(num1, num2, multiplyLargeNumberStack, res, timeInput);
             break;
         default:
             return;
