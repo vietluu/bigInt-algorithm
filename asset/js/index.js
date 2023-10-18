@@ -6,7 +6,6 @@ import { divideLargeNumbers } from './div.js';
 import { multiplyLargeNumberDBLinkedList
 } from './doubleLinkedlist.js'
 import {multiplyLargeNumberLinkedlist} from './linkedList.js'
-import {multiplyLargeNumberStack} from './stack.js'
 const randomBtn = document.getElementById('random');
 const number1 = document.getElementById('num1');
 const number2 = document.getElementById('num2');
@@ -75,7 +74,7 @@ function mathAction(e) {
             performanceTime(num1, num2, divideLargeNumbers, res, timeInput);
             break;
         case 'multiplication':
-            performanceTime(num1, num2, multiplyLargeNumberStack, res, timeInput);
+            performanceTime(num1, num2, multiplyLargeNumberDBLinkedList, res, timeInput);
             break;
         default:
             return;
