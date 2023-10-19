@@ -3,9 +3,8 @@ import { addLargeIntegers } from './add.js';
 import { getRandomLargeIntegersInRange } from './random.js';
 import { subtractLargeIntegers } from './sub.js';
 import { divideLargeNumbers } from './div.js';
-import { multiplyLargeNumberDBLinkedList
-} from './doubleLinkedlist.js'
 import {multiplyLargeNumberLinkedlist} from './linkedList.js'
+import {multiplyStrings} from './mul.js'
 const randomBtn = document.getElementById('random');
 const number1 = document.getElementById('num1');
 const number2 = document.getElementById('num2');
