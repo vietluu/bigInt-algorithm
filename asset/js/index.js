@@ -4,7 +4,10 @@ import { getRandomLargeIntegersInRange } from './random.js';
 import { subtractLargeIntegers } from './sub.mjs';
 import { divideLargeNumbers } from './div.js';
 
-import { subLinkedList, addLinkedList } from './linkedList.js';
+import { subLinkedList, addLinkedList } from './subsumLinked.mjs';
+import { multiplyStrings } from './mul.js';
+import { multiplyLargeNumberLinkedlist } from './linkedList.js';
+// import { multiplyLargeNumberDBLinkedList } from './doubleLinkedlist.js';
 
 const randomBtn = document.getElementById('random');
 const number1 = document.getElementById('num1');
@@ -29,6 +32,9 @@ fileData.addEventListener('change', (e) => {
         let value = JSON.parse(reader.result);
         number1.value = value.num1;
         number2.value = value.num2;
+        res.value = value.result;
+        compareString.innerText = value.timeStr;
+        compareLinked.innerText = value.timeLinked;
     };
 
     reader.onerror = function () {
@@ -51,13 +57,6 @@ function mathAction(e) {
     // console.log(num1, num2, select);
     switch (select) {
         case 'summation':
-            res.value = performanceTime(
-                num1,
-                num2,
-                addLargeIntegers,
-                timeInput
-            );
-
             const dataAdd = {
                 str: performanceTime(num1, num2, addLargeIntegers),
                 linked: performanceTime(num1, num2, addLinkedList),
@@ -91,12 +90,27 @@ function mathAction(e) {
             );
             break;
         case 'multiplication':
-            res.value = performanceTime(
-                num1,
-                num2,
-                multiplyLinkedList,
-                timeInput
-            );
+            // res.value = performanceTime(
+            //     num1,
+            //     num2,
+            //     multiplyLargeNumberLinkedlist
+            // ).result;
+
+            const dataMul = {
+                str: performanceTime(num1, num2, multiplyStrings),
+                linked: performanceTime(
+                    num1,
+                    num2,
+                    multiplyLargeNumberLinkedlist
+                ),
+            };
+            console.log(dataMul);
+            if (dataMul.str.result === dataMul.linked.result) {
+                res.value = dataMul.str.result;
+                compareString.innerText = dataMul.str.time.toFixed(9) + ' ms';
+                compareLinked.innerText =
+                    dataMul.linked.time.toFixed(9) + ' ms';
+            }
             break;
         default:
             return;
