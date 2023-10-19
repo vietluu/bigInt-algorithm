@@ -4,8 +4,13 @@ export function multiplyStrings(num1, num2) {
     if (num1.charAt(0) === '-' && num2.charAt(0) !== '-') {
         isNegative = true;
         num1 = num1.slice(1);
-    } else if (num1.charAt(0) !== '-' && num2.charAt(0) === '-') {
+    }
+    if (num1.charAt(0) !== '-' && num2.charAt(0) === '-') {
         isNegative = true;
+        num2 = num2.slice(1);
+    }
+    if (num1.charAt(0) === '-' && num2.charAt(0) === '-') {
+        num1 = num1.slice(1);
         num2 = num2.slice(1);
     }
 
