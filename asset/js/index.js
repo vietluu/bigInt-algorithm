@@ -23,6 +23,7 @@ const randomStart = document.querySelector('.random-start');
 const randomEnd = document.querySelector('.random-end');
 
 const fileData = document.getElementById('data');
+const saveFileBtn = document.getElementById('savefile');
 
 fileData.addEventListener('change', (e) => {
     let reader = new FileReader();
@@ -82,20 +83,16 @@ function mathAction(e) {
 
             break;
         case 'division':
-            res.value = performanceTime(
+            const dataDiv = performanceTime(
                 num1,
                 num2,
                 divideLargeNumbers,
                 timeInput
             );
+            res.value = dataDiv.result;
+            compareString.innerText = dataDiv.time.toFixed(9) + ' ms';
             break;
         case 'multiplication':
-            // res.value = performanceTime(
-            //     num1,
-            //     num2,
-            //     multiplyLargeNumberLinkedlist
-            // ).result;
-
             const dataMul = {
                 str: performanceTime(num1, num2, multiplyStrings),
                 linked: performanceTime(
@@ -135,4 +132,26 @@ clearBtn.onclick = () => {
     number2.value = '';
     res.value = '';
     timeInput.value = '0 milliseconds';
+};
+
+saveFileBtn.onclick = () => {
+    let dataToSave = {
+        num1: number1.value,
+        num2: number2.value,
+        result: res.value,
+        timeStr: compareString.innerText,
+        timeLinked: compareLinked.innerText,
+    };
+
+    // Chuyển đổi đối tượng JSON thành một chuỗi JSON
+    let dataToSaveString = JSON.stringify(dataToSave);
+    const blob = new Blob([dataToSaveString], { type: 'application/json' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'data.json'; // Tên tệp JSON khi người dùng tải xuống
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
 };

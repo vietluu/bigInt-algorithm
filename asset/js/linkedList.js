@@ -56,7 +56,8 @@ export function multiplyLargeNumberLinkedlist(num1, num2) {
         let carry = 0;
 
         for (let j = 0; num1Node !== null; j++) {
-            const product = num2Node.value * num1Node.value + result[i + j]; // Sửa đổi ở đây
+            const product =
+                num2Node.value * num1Node.value + result[i + j] + carry;
             carry = Math.floor(product / 10);
             result[i + j] = product % 10;
             num1Node = num1Node.next;
