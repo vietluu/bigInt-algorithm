@@ -73,9 +73,11 @@ export function multiplyLargeNumberLinkedlist(num1, num2) {
   }
 
   let finalResult = result.reverse().join('');
-  if (isNegative) {
+  
+  if (isNegative && finalResult !== '0') {
     finalResult = '-' + finalResult;
   }
 
   return finalResult;
 }
+
