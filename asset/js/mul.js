@@ -4,11 +4,16 @@ export function multiplyStrings(num1, num2) {
     if (num1.charAt(0) === '-' && num2.charAt(0) !== '-') {
         isNegative = true;
         num1 = num1.slice(1);
-    } else if (num1.charAt(0) !== '-' && num2.charAt(0) === '-') {
+    }
+     if (num1.charAt(0) !== '-' && num2.charAt(0) === '-') {
         isNegative = true;
         num2 = num2.slice(1);
     }
-
+    if(num1.charAt(0) === '-' && num2.charAt(0) === '-' ){
+        num1 = num1.slice(1);
+        num2 = num2.slice(1);
+    }
+    console.log(num1,num2)
     const bigInt1 = num1.length;
     const bigInt2 = num2.length;
 
@@ -27,7 +32,7 @@ export function multiplyStrings(num1, num2) {
     while (result[startIndex] === 0 && startIndex < result.length - 1) {
         startIndex++;
     }
-
+    console.log(isNegative)
     if (isNegative && result.length > startIndex) {
         return '-' + result.slice(startIndex).join('');
     } else {

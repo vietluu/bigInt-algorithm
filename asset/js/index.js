@@ -73,7 +73,7 @@ function mathAction(e) {
             performanceTime(num1, num2, divideLargeNumbers, res, timeInput);
             break;
         case 'multiplication':
-            performanceTime(num1, num2, multiplyLargeNumberLinkedlist, res, timeInput);
+            performanceTime(num1, num2, multiplyStrings, res, timeInput);
             break;
         default:
             return;
