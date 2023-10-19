@@ -1,5 +1,6 @@
+import { sub } from './sub.mjs';
 // hàm cộng
-export function addLargeIntegers(str1, str2) {
+export function add(str1, str2) {
     // Đảm bảo str1 là chuỗi dài hơn (nếu không, hoán đổi)
     if (str1.length < str2.length) {
         [str1, str2] = [str2, str1];
@@ -33,3 +34,18 @@ export function addLargeIntegers(str1, str2) {
 
     return result;
 }
+
+export function addLargeIntegers(str1, str2) {
+    if (str1[0] === '-' && str2[0] === '-') {
+        return '-' + add(str1.substring(1), str2.substring(1));
+    } else if (str1[0] === '-') {
+        return sub(str2, str1.substring(1));
+    } else if (str2[0] === '-') {
+        return sub(str1, str2.substring(1));
+    }
+    return add(str1, str2);
+}
+
+const n1 = '-15';
+const n2 = '-9';
+console.log(addLargeIntegers(n1, n2));

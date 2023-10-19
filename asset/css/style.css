@@ -32,10 +32,27 @@ button {
     border: 0;
 }
 body {
-    min-height: 100vh;
     font-weight: 400;
     font-size: 16px;
     line-height: 1;
+}
+
+.container {
+    display: flex;
+    column-gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+}
+.compare {
+    width: 300px;
+    height: 200px;
+    background-color: #f1be76;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .form {
@@ -45,8 +62,7 @@ body {
     flex-shrink: 0;
     flex-basis: auto;
     flex-direction: column;
-    margin: 0 auto;
-    margin-top: 50px;
+    /* margin: 0 auto; */
     padding: 10px;
     background-color: #f1be76;
     border-radius: 10px;
@@ -141,6 +157,10 @@ body {
 }
 .modal button {
     text-align: center;
+}
+.random-box {
+    display: flex;
+    align-items: center;
 }
 
 .random-box label {

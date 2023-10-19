@@ -1,17 +1,16 @@
 // do thoi gian xu li
-export function performanceTime(num1, num2, func, res, timeInput) {
-    // showModal(func(num1, num2), time.toFixed(3));
+export function performanceTime(num1, num2, func) {
     const memoizeFn = memoize(func);
     const start = performance.now();
     const result = memoizeFn(num1, num2);
     const end = performance.now();
     const time = end - start;
-    res.value = result;
-    timeInput.value = time.toFixed(3) + ' milliseconds';
-    console.log(func(num1, num2));
-    // alert(
-    //   "result: " + func(num1, num2) + " in: " + time.toFixed(3) + " milliseconds"
-    // );
+    // timeInput.value = time.toFixed(3) + ' milliseconds';
+
+    return {
+        result,
+        time,
+    };
 }
 function memoize(fn) {
     let cache = {};
