@@ -74,7 +74,7 @@ function mathAction(e) {
             performanceTime(num1, num2, divideLargeNumbers, res, timeInput);
             break;
         case 'multiplication':
-            performanceTime(num1, num2, multiplyLargeNumberDBLinkedList, res, timeInput);
+            performanceTime(num1, num2, multiplyLargeNumberLinkedlist, res, timeInput);
             break;
         default:
             return;
