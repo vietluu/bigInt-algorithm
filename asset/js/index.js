@@ -4,6 +4,7 @@ import { getRandomLargeIntegersInRange } from './random.js';
 import { subtractLargeIntegers } from './sub.mjs';
 import { divideLargeNumbers } from './div.js';
 
+
 import { subLinkedList, addLinkedList } from './subsumLinked.mjs';
 import { multiplyStrings } from './mul.js';
 import { multiplyLargeNumberLinkedlist } from './linkedList.js';
@@ -93,6 +94,7 @@ function mathAction(e) {
             compareString.innerText = dataDiv.time.toFixed(9) + ' ms';
             break;
         case 'multiplication':
+
             const dataMul = {
                 str: performanceTime(num1, num2, multiplyStrings),
                 linked: performanceTime(
@@ -108,6 +110,7 @@ function mathAction(e) {
                 compareLinked.innerText =
                     dataMul.linked.time.toFixed(9) + ' ms';
             }
+
             break;
         default:
             return;
