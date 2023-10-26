@@ -1,5 +1,6 @@
-// hàm trừ
-export function subtractLargeIntegers(str1, str2) {
+import { add } from './add.mjs';
+
+export const sub = (str1, str2) => {
     let isNegative = false;
     // Đảm bảo str1 là chuỗi lớn hơn hoặc bằng str2 (nếu không, hoán đổi)
     if (
@@ -42,4 +43,19 @@ export function subtractLargeIntegers(str1, str2) {
     }
 
     return isNegative ? '-' + result : result;
+};
+// hàm trừ
+export function subtractLargeIntegers(str1, str2) {
+    if (str1[0] === '-' && str2[0] === '-') {
+        return sub(str2.substring(1), str1.substring(1));
+    } else if (str2[0] === '-') {
+        return add(str1, str2.substring(1));
+    } else if (str1[0] === '-') {
+        return '-' + add(str1.substring(1), str2);
+    }
+    return sub(str1, str2);
 }
+
+// const n1 = '15';
+// const n2 = '9';
+// console.log(subtractLargeIntegers(n1, n2));
