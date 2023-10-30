@@ -2,7 +2,8 @@ import { performanceTime } from './performanceTime.js';
 import { add, addLargeIntegers } from './add.mjs';
 import { getRandomLargeIntegersInRange } from './random.js';
 import { subtractLargeIntegers } from './sub.mjs';
-import { divideLargeNumbers } from './div.js';
+import { divideLargeIntegers } from './div.mjs';
+import { divideLargeIntegersStack } from './div-stack.mjs';
 
 import { subLinkedList, addLinkedList } from './subsumLinked.mjs';
 import { multiplyStrings } from './mul.js';
@@ -18,7 +19,8 @@ const clearBtn = document.getElementById('clear');
 
 const compareString = document.querySelector('.compare-string');
 const compareLinked = document.querySelector('.compare-linked');
-
+const compareStack = document.querySelector('.compare-stack');
+console.log(compareStack);
 const randomStart = document.querySelector('.random-start');
 const randomEnd = document.querySelector('.random-end');
 
@@ -83,14 +85,19 @@ function mathAction(e) {
 
             break;
         case 'division':
-            const dataDiv = performanceTime(
-                num1,
-                num2,
-                divideLargeNumbers,
-                timeInput
-            );
-            res.value = dataDiv.result;
-            compareString.innerText = dataDiv.time.toFixed(9) + ' ms';
+            if (num2 == '0') {
+                res.value = 'ko chia cho 0';
+                break;
+            }
+            const dataDiv = {
+                string: performanceTime(num1, num2, divideLargeIntegers),
+                stack: performanceTime(num1, num2, divideLargeIntegersStack),
+            };
+            res.value = dataDiv.stack.result;
+
+            compareString.innerText = dataDiv.string.time.toFixed(9) + ' ms';
+            compareStack.innerText = dataDiv.stack.time.toFixed(9) + ' ms';
+
             break;
         case 'multiplication':
             const dataMul = {
@@ -131,6 +138,9 @@ clearBtn.onclick = () => {
     number1.value = '';
     number2.value = '';
     res.value = '';
+    compareString.innerText = '0ms';
+    compareStack.innerText = '0ms';
+    compareLinked.innerText = '0ms';
     timeInput.value = '0 milliseconds';
 };
 
