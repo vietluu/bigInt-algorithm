@@ -5,6 +5,7 @@ import { subtractLargeIntegers } from './sub.mjs';
 import { divideLargeIntegers } from './div.mjs';
 import { divideLargeIntegersStack } from './div-stack.mjs';
 
+
 import { subLinkedList, addLinkedList } from './subsumLinked.mjs';
 import { multiplyStrings } from './mul.js';
 import { multiplyLargeNumberLinkedlist } from './linkedList.js';
@@ -100,6 +101,7 @@ function mathAction(e) {
 
             break;
         case 'multiplication':
+
             const dataMul = {
                 str: performanceTime(num1, num2, multiplyStrings),
                 linked: performanceTime(
@@ -115,6 +117,7 @@ function mathAction(e) {
                 compareLinked.innerText =
                     dataMul.linked.time.toFixed(9) + ' ms';
             }
+
             break;
         default:
             return;
