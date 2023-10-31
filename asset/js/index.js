@@ -4,8 +4,6 @@ import { getRandomLargeIntegersInRange } from './random.js';
 import { subtractLargeIntegers } from './sub.mjs';
 import { divideLargeIntegers } from './div.mjs';
 import { divideLargeIntegersStack } from './div-stack.mjs';
-
-
 import { subLinkedList, addLinkedList } from './subsumLinked.mjs';
 import { multiplyStrings } from './mul.js';
 import { multiplyLargeNumberLinkedlist } from './linkedList.js';
@@ -21,7 +19,6 @@ const clearBtn = document.getElementById('clear');
 const compareString = document.querySelector('.compare-string');
 const compareLinked = document.querySelector('.compare-linked');
 const compareStack = document.querySelector('.compare-stack');
-console.log(compareStack);
 const randomStart = document.querySelector('.random-start');
 const randomEnd = document.querySelector('.random-end');
 
@@ -98,7 +95,6 @@ function mathAction(e) {
 
             compareString.innerText = dataDiv.string.time.toFixed(9) + ' ms';
             compareStack.innerText = dataDiv.stack.time.toFixed(9) + ' ms';
-
             break;
         case 'multiplication':
 
