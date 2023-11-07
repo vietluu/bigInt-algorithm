@@ -49,6 +49,7 @@
                     let currentPage = 1;
                     let totalPages = Math.ceil(json.length / rowsPerPage);
                     let currentData = json.slice(0, rowsPerPage);
+                    tableBody.innerHTML = '';
                     currentData.forEach((row, index) => {
                         const tr = document.createElement('tr');
                         const indexTd = document.createElement('td');
@@ -69,6 +70,7 @@
                         button.addEventListener('click', () => {
                             currentPage = i;
                             currentData = json.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+                             tableBody.innerHTML = '';
                             currentData.forEach((row, index) => {
                                 const tr = document.createElement('tr');
                                 const indexTd = document.createElement('td');
