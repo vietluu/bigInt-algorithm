@@ -1,5 +1,6 @@
 import { addLargeIntegers } from './add.mjs';
 import { divideLargeIntegers } from './div.mjs';
+import { divideLargeIntegersStack } from './div-stack.mjs';
 const form = document.querySelector('form');
 let json = null;
 const totalSalary = document.querySelector('#total-salary');
@@ -77,7 +78,8 @@ form.addEventListener('submit', (event) => {
         total = addLargeIntegers(total, json[i].salary.toString());
     }
     const totalSalaryText = `Tổng lương: ${total}`;
-    const average = divideLargeIntegers(total, length.toString());
+    const average = divideLargeIntegersStack(total, length.toString());
+    // const average = total / 11;
     totalSalary.textContent = totalSalaryText;
     averageSalary.textContent = `Trung bình lương: ${average}`;
 });
