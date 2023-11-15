@@ -3,7 +3,7 @@ import { add, addLargeIntegers } from './add.mjs';
 import { getRandomLargeIntegersInRange } from './random.js';
 import { subtractLargeIntegers } from './sub.mjs';
 import { divideLargeIntegers } from './div.mjs';
-import { divideLargeIntegersStack } from './div-stack.mjs';
+// import { divideLargeIntegersStack } from './div-stack.mjs';
 import { subLinkedList, addLinkedList } from './subsumLinked.mjs';
 import { multiplyStrings } from './mul.js';
 import { multiplyLargeNumberLinkedlist } from './linkedList.js';
@@ -89,12 +89,12 @@ function mathAction(e) {
             }
             const dataDiv = {
                 string: performanceTime(num1, num2, divideLargeIntegers),
-                stack: performanceTime(num1, num2, divideLargeIntegersStack),
+                // stack: performanceTime(num1, num2, divideLargeIntegersStack),
             };
-            res.value = dataDiv.stack.result;
+            res.value = dataDiv.string.result;
 
             compareString.innerText = dataDiv.string.time.toFixed(9) + ' ms';
-            compareStack.innerText = dataDiv.stack.time.toFixed(9) + ' ms';
+            // compareStack.innerText = dataDiv.stack.time.toFixed(9) + ' ms';
             break;
         case 'multiplication':
 
