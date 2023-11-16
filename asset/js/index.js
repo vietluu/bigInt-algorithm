@@ -7,6 +7,7 @@ import { divideLargeIntegers } from './div.mjs';
 import { subLinkedList, addLinkedList } from './subsumLinked.mjs';
 import { multiplyStrings } from './mul.js';
 import { multiplyLargeNumberLinkedlist } from './linkedList.js';
+import { addLargeIntegersArr, subtractLargeIntegersArr } from './subsumArr.mjs';
 // import { multiplyLargeNumberDBLinkedList } from './doubleLinkedlist.js';
 
 const randomBtn = document.getElementById('random');
@@ -19,6 +20,7 @@ const clearBtn = document.getElementById('clear');
 const compareString = document.querySelector('.compare-string');
 const compareLinked = document.querySelector('.compare-linked');
 const compareStack = document.querySelector('.compare-stack');
+const compareArr = document.querySelector('.compare-array');
 const randomStart = document.querySelector('.random-start');
 const randomEnd = document.querySelector('.random-end');
 
@@ -58,27 +60,55 @@ function mathAction(e) {
     // console.log(num1, num2, select);
     switch (select) {
         case 'summation':
+            let arr1 = num1
+                .split('')
+                .map((char) =>
+                    isNaN(parseInt(char, 10)) ? char : parseInt(char, 10)
+                );
+            let arr2 = num2
+                .split('')
+                .map((char) =>
+                    isNaN(parseInt(char, 10)) ? char : parseInt(char, 10)
+                );
             const dataAdd = {
                 str: performanceTime(num1, num2, addLargeIntegers),
                 linked: performanceTime(num1, num2, addLinkedList),
+                arr: performanceTime(arr1, arr2, addLargeIntegersArr),
             };
             if (dataAdd.str.result === dataAdd.linked.result) {
                 res.value = dataAdd.str.result;
                 compareString.innerText = dataAdd.str.time.toFixed(9) + ' ms';
                 compareLinked.innerText =
                     dataAdd.linked.time.toFixed(9) + ' ms';
+                compareArr.innerText = dataAdd.arr.time.toFixed(9) + ' ms';
             }
             break;
         case 'subtraction':
+            let arrSub1 = num1
+                .split('')
+                .map((char) =>
+                    isNaN(parseInt(char, 10)) ? char : parseInt(char, 10)
+                );
+            let arrSub2 = num2
+                .split('')
+                .map((char) =>
+                    isNaN(parseInt(char, 10)) ? char : parseInt(char, 10)
+                );
             const dataSub = {
                 str: performanceTime(num1, num2, subtractLargeIntegers),
                 linked: performanceTime(num1, num2, subLinkedList),
+                arr: performanceTime(
+                    arrSub1,
+                    arrSub2,
+                    subtractLargeIntegersArr
+                ),
             };
             if (dataSub.str.result === dataSub.linked.result) {
                 res.value = dataSub.str.result;
                 compareString.innerText = dataSub.str.time.toFixed(9) + ' ms';
                 compareLinked.innerText =
                     dataSub.linked.time.toFixed(9) + ' ms';
+                compareArr.innerText = dataSub.arr.time.toFixed(9) + ' ms';
             }
 
             break;
@@ -97,7 +127,6 @@ function mathAction(e) {
             // compareStack.innerText = dataDiv.stack.time.toFixed(9) + ' ms';
             break;
         case 'multiplication':
-
             const dataMul = {
                 str: performanceTime(num1, num2, multiplyStrings),
                 linked: performanceTime(

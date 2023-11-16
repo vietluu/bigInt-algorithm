@@ -16,6 +16,7 @@ form.addEventListener('change', (event) => {
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
         json = XLSX.utils.sheet_to_json(worksheet);
+        console.log(json);
         const tableBody = document.querySelector('#table-body');
         const pagination = document.querySelector('#pagination');
         const rowsPerPage = 10;
@@ -54,7 +55,10 @@ form.addEventListener('change', (event) => {
                     const nameTd = document.createElement('td');
                     nameTd.textContent = row.name;
                     const salaryTd = document.createElement('td');
-                    salaryTd.textContent = String(row.salary);
+                    salaryTd.innerText = row.salary.toLocaleString('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND',
+                    });
                     tr.appendChild(indexTd);
                     tr.appendChild(nameTd);
                     tr.appendChild(salaryTd);
@@ -77,9 +81,21 @@ form.addEventListener('submit', (event) => {
     for (let i = 0; i < length; i++) {
         total = addLargeIntegers(total, json[i].salary.toString());
     }
-    const totalSalaryText = `Tổng lương: ${total}`;
+
+    const totalSalaryText = `Tổng lương: ${Number(total).toLocaleString(
+        'vi-VN',
+        {
+            style: 'currency',
+            currency: 'VND',
+        }
+    )}`;
     const average = divideLargeIntegersStack(total, length.toString());
     // const average = total / 11;
     totalSalary.textContent = totalSalaryText;
-    averageSalary.textContent = `Trung bình lương: ${average}`;
+    averageSalary.textContent = `Trung bình lương: ${Number(
+        average
+    ).toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    })}`;
 });

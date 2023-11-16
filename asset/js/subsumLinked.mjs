@@ -92,6 +92,53 @@ function add(num1, num2) {
 }
 
 // trừ
+// let isNegative = false;
+
+// // Kiểm tra chiều dài của linked list và so sánh giá trị
+// const length1 = getLength(num1);
+// const length2 = getLength(num2);
+
+// if (length1 < length2 || (length1 === length2 && compareLinkedList(num1, num2) < 0)) {
+//     isNegative = true;
+//     [num1, num2] = [num2, num1];
+// }
+
+// function getLength(list) {
+//     let length = 0;
+//     let current = list.head;
+
+//     while (current) {
+//         length++;
+//         current = current.next;
+//     }
+
+//     return length;
+// }
+// function compareLinkedList(list1, list2) {
+//     let current1 = list1.head;
+//     let current2 = list2.head;
+
+//     while (current1 && current2) {
+//         if (current1.data < current2.data) {
+//             return -1;
+//         } else if (current1.data > current2.data) {
+//             return 1;
+//         }
+
+//         current1 = current1.next;
+//         current2 = current2.next;
+//     }
+
+//     // Nếu một trong hai linked list đã kết thúc, so sánh chiều dài
+//     if (!current1 && current2) {
+//         return -1;
+//     } else if (current1 && !current2) {
+//         return 1;
+//     }
+
+//     // Hai linked list giống nhau
+//     return 0;
+// }
 function sub(num1, num2) {
     let isNegative = false;
     // Đảm bảo str1 là chuỗi lớn hơn hoặc bằng str2 (nếu không, hoán đổi)
@@ -182,3 +229,34 @@ const num2 = '-22';
 
 const res = addLinkedList(num1, num2);
 console.log(res); // Kết quả: "122667"
+// export function subLinkedList(list1, list2) {
+//     if (list1.head && list1.head.value === '-' && list2.head && list2.head.value === '-') {
+//         // Trường hợp cả hai đều là số âm
+//         return sub(list2.head.next, list1.head.next);
+//     } else if (list2.head && list2.head.value === '-') {
+//         // Trường hợp chỉ có str2 là số âm
+//         return add(list1, list2.head.next);
+//     } else if (list1.head && list1.head.value === '-') {
+//         // Trường hợp chỉ có str1 là số âm
+//         return '-' + add(list1.head.next, list2);
+//     }
+
+//     // Trường hợp cả hai đều là số dương hoặc có một số âm
+//     return sub(list1, list2);
+// }
+
+// export function addLinkedList(list1, list2) {
+//     if (list1.head && list1.head.value === '-' && list2.head && list2.head.value === '-') {
+//         // Trường hợp cả hai đều là số âm
+//         return add(list1.head.next, list2.head.next);
+//     } else if (list1.head && list1.head.value === '-') {
+//         // Trường hợp chỉ có str1 là số âm
+//         return sub(list2, list1.head.next);
+//     } else if (list2.head && list2.head.value === '-') {
+//         // Trường hợp chỉ có str2 là số âm
+//         return sub(list1, list2.head.next);
+//     }
+
+//     // Trường hợp cả hai đều là số dương hoặc có một số âm
+//     return add(list1, list2);
+// }
